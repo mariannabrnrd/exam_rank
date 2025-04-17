@@ -23,24 +23,40 @@ Esempi:
 
 int *ft_rrange(int start, int end)
 {
-    int *rrange;
-    int i;
+    int     *rrange;
+    int     i;
+    int     size;
 
+    i = 0;
     if (start > end)
-        i = (start - end) + 1;
+        size = (start - end) + 1;
     else
-        i = (end - start) + 1;
-    rrange = (int *)malloc(sizeof(int) * i);
+        size = (end - start) + 1;
+    rrange = (int *)malloc(sizeof(int) * size);
     if (!rrange)
-        return (NULL);
-    while (i)
+        return(NULL);
+    if (start > end)
     {
-        i--;
-        rrange[i] = start;
-        start += 1;
+        while (i < size)
+        {
+            rrange[i] = end;
+            end += 1;
+            i++;
+        }
     }
-    return (rrange);
+    else
+    {
+        while (size)
+        {
+            size--;
+            rrange[size] = start;
+            start += 1;
+        }
+    }
+    return(rrange);
 }
+
+/* MAIN ******************************************************************************************** */
 
 int		main(void)
 {
@@ -48,13 +64,18 @@ int		main(void)
     int end;
     int *result;
     int i;
+    int size;
 
     i = 0;
-    start = -1;
-    end = 2;
+    start = 0;
+    end = -3;
+    if (start > end)
+        size = (start - end) + 1;
+    else
+        size = (end - start) + 1;
     result = ft_rrange(start, end);
     printf("ft_rrange(%d, %d): ",start, end);
-    while (i <= end - start)
+    while (i < size)
     {
         printf("%d, ", result[i]);
         i++;
