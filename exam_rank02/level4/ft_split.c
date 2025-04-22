@@ -65,7 +65,7 @@ char **ft_split(char *str)
     j = 0;
     phrase = (char **)malloc(sizeof(char *) * (count_word(str) + 1));
     if (!phrase)
-        return(0);
+        return(NULL);
     while(str[i])
     {
         while(str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
@@ -76,6 +76,8 @@ char **ft_split(char *str)
         if (i > j)
         {
             phrase[k] = (char *)malloc(sizeof(char) * (i - j) + 1);
+            if(!phrase[k])
+                return(NULL);
             ft_strncpy(phrase[k], &str[j], i - j);
             k++;
         }
