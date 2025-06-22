@@ -1,0 +1,12 @@
+Nome dell'eserciozio : ft_itoa
+File richiesti : ft_itoa.c
+Funzioni permesse : malloc
+------------------------------------------------------------
+
+Scrivi una funzione che prende un intero e lo converte in una stringa
+terminata da null (\0).
+La funzione restituisce il risultato in un array di caratteri che devi allocare.
+
+La tua funzione deve essere dichiarata come segue:
+
+char    *ft_itoa(int nbr);
