@@ -1,0 +1,28 @@
+File attesi : ft_printf.c
+Funzioni permesse : malloc, free, write, va_start, va_arg, va_copy, va_end
+-------------------------------------------------------------------------------
+
+Scrivi una funzione chiamata ft_printf che imiterà il vero printf,
+ma dovrà gestire solo le seguenti conversioni: s, d e x.
+
+La tua funzione deve essere dichiarata come segue:
+
+int ft_printf(const char *, ... );
+
+Prima di iniziare, ti consigliamo di leggere le pagine di 'man 3 printf'
+e di 'man va_arg'. Per testare il tuo programma, confronta i tuoi risultati
+con quelli del vero printf.
+
+Esempi di output della funzione:
+
+chiamata: ft_printf("%s\n", "toto");
+output:   toto$
+
+chiamata: ft_printf("Magic %s is %d", "number", 42);
+output: Magic number is 42%
+
+chiamata: ft_printf("Hexadecimal for %d is %x\n", 42, 42);
+output: Hexadecimal for 42 is 2a$
+
+Nota: La tua funzione non deve avere memory leaks. La Moulinette controllerà
+anche questo.
