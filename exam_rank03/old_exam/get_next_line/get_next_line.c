@@ -15,7 +15,7 @@ char    *ft_strdup(char *str)
         return(NULL);
     while (str[j])
     {
-        new[j] = str[i];
+        new[j] = str[j];
         j++;
     }
     new[j] = '\0';
@@ -50,4 +50,22 @@ char    *get_next_line(int fd)
     if (i == 0)
         return(NULL);
     return(ft_strdup(line));
+}
+
+/*---------------------main per testare----------------------------------------------------*/
+
+int     main(void)
+{
+    int     fd;
+    char    *line;
+
+    fd = open("test.txt", O_RDONLY);
+    while((line = get_next_line(fd)) != NULL)
+    {
+        printf("%s", line);
+        free(line);
+    }
+
+    close(fd);
+    return(0);
 }
