@@ -1,0 +1,37 @@
+Nome dell'esercizio : get_next_line
+File richiesti : get_next_line.c (42_EXAM al momento non accetta file.h)
+Funzioni permesse : read, free, malloc
+---------------------------------------------------------------------------------
+
+Scrivi una funzione chiamata get_next_line il cui prototipo deve essere:
+char *get_next_line(int fd);
+
+La tua funzione deve restituire una linea che è stata letta dal file descriptor
+passato come parametro. Quella che chiamiamo "linea letta" è una successione da
+0 a n caratteri che termina con un '\n' (codice ASCII 0x0a) opppure  con la fine
+del file (EOF).
+
+La linea restituita deve includere il carattere '\n' nel caso in cui sia presente
+alla fine della linea letta. Quando viene raggiunto l'EOF, devi conservare il contenuto
+corrente del buffer in una variabile di tipo char * e restituirla. Se il buffer è vuoto,
+devi restituire NULL.
+
+In caso di errore, restituisci NULL. Se invece restituisci qualcosa che non è NULL, il
+puntatore deve essere liberabile con free. Il tuo programma sarà compilato con il flag
+-D BUFFER_SIZE=xx, che deve essere utilizzato come dimensione del buffer per le chiamate
+a read nella tua funzione.
+
+La tua funzione non deve avere perdite di memoria (memory leaks). Quando viene raggiunto
+l' EOF, la tua funzione non deve mantenere alcuna memoria allocata con malloc, eccetto
+quella della linea restituita.
+
+Chiamando la funzione get_next_line in un ciclo sarà quindi possibile leggere, una 
+riga alla volta, tutto il testo disponibile su un file descriptor, indipendentemente 
+dalla dimensione del testo o delle singole righe.
+
+Assicurati che la tua funzione si comporti correttamente leggendo da un file, dallo
+standard output, da una redirezione, ecc..
+
+Non verrà effettuata alcuna altra chiamata sul file descriptor tra due chiamate consecutive
+a get_next_line(). Infine, si considera che get_next_line() abbia un comportamento
+indefinito quando legge da un file binario.
